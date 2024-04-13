@@ -10,10 +10,16 @@ variable "your_existing_vpc_id" {
   default     = "vpc-086340a0c95fe4d4b"
 }
 
-variable "your_existing_subnet_cidr" {
+variable "custom_ami" {
   description = "Specifies the main CIDR block."
   type        = string
   default     = "10.0.0.0/26"
+}
+
+variable "your_existing_subnet_id" {
+  description = "Specifies the main CIDR block."
+  type        = string
+  default     = "subnet-0d3db2de738b69acc"
 }
 
 variable "project_tag" {
