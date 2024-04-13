@@ -65,10 +65,10 @@ resource "aws_instance" "example_server_new_policy" {
   iam_instance_profile        = aws_iam_instance_profile.ssm_profile.name
   associate_public_ip_address = true
   root_block_device {
-   volume_type           = "gp2"
-   volume_size           = "8"
-   delete_on_termination = true
- }
+    volume_type           = "gp2"
+    volume_size           = "8"
+    delete_on_termination = true
+  }
 
   tags = {
     Name = "${var.project_tag}-new-policy"
@@ -84,10 +84,10 @@ resource "aws_instance" "example_server_existing_policy" {
   iam_instance_profile        = "AmazonSSMManagedInstanceCore_Role"
   associate_public_ip_address = true
   root_block_device {
-   volume_type           = "gp2"
-   volume_size           = "8"
-   delete_on_termination = true
- }
+    volume_type           = "gp2"
+    volume_size           = "8"
+    delete_on_termination = true
+  }
 
   tags = {
     Name = var.project_tag

@@ -4,6 +4,12 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
+variable "use_existing_infra" {
+  description = "True to use existing id. False to provide one"
+  type        = bool
+  default     = true
+}
+
 variable "your_existing_vpc_id" {
   description = "The vpc id the instance will be created (e.g., vpc-086340xxxxxxxxxxx)"
   type        = string
