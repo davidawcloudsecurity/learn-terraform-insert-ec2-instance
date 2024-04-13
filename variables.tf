@@ -10,20 +10,29 @@ variable "your_existing_vpc_id" {
   default     = "vpc-086340a0c95fe4d4b"
 }
 
-variable "custom_ami" {
-  description = "Specifies the main CIDR block."
-  type        = string
-  default     = "10.0.0.0/26"
-}
-
 variable "your_existing_subnet_id" {
   description = "Specifies the main CIDR block."
   type        = string
   default     = "subnet-0d3db2de738b69acc"
 }
 
+variable "your_existing_security_group" {
+  description = "Specifies the exisiting security group"
+  type        = string
+  default     = "sg-0e7a8e0647f5e91e3"
+}
+
 variable "project_tag" {
   description = "Specifies the name tag."
   type        = string
   default     = "learn-tf-insert-ec2"
+}
+
+variable "string_heredoc_type" {
+  description = "This is a variable of type string"
+  type        = string
+  default     = <<EOF
+hello, this is Sumeet.
+Do visit my website!
+EOF
 }

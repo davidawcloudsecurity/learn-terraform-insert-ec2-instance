@@ -1,6 +1,6 @@
 locals {
   ami  = "ami-0a699202e5027c10d"
-  type = "t2.medium"
+  type = "t2.micro"
   tags = {
     Name = "My Virtual Machine"
     Env  = "Dev"
