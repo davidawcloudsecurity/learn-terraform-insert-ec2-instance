@@ -64,6 +64,11 @@ resource "aws_instance" "example_server_new_policy" {
   vpc_security_group_ids      = [var.your_existing_security_group] # Use the ID of the existing security group
   iam_instance_profile        = aws_iam_instance_profile.ssm_profile.name
   associate_public_ip_address = true
+  root_block_device {
+   volume_type           = "gp2"
+   volume_size           = "8"
+   delete_on_termination = true
+ }
 
   tags = {
     Name = "${var.project_tag}-new-policy"
@@ -78,6 +83,11 @@ resource "aws_instance" "example_server_existing_policy" {
   vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
   iam_instance_profile        = "AmazonSSMManagedInstanceCore_Role"
   associate_public_ip_address = true
+  root_block_device {
+   volume_type           = "gp2"
+   volume_size           = "8"
+   delete_on_termination = true
+ }
 
   tags = {
     Name = var.project_tag
