@@ -92,9 +92,7 @@ resource "aws_instance" "example_linux_existing_policy" {
     delete_on_termination = true
   }
 
-  tags = {
-    Name = var.project_tag
-  }
+  tags = local.tags
 }
 
 resource "aws_instance" "example_windows_existing_policy" {
