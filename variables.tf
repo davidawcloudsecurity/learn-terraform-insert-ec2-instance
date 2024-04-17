@@ -83,8 +83,8 @@ variable "string_heredocwindows_type" {
   type        = string
   default     = <<EOF
 <script>
-net users user2 Letmein2021 /add /passwordchg:yes
-net users admin2 Letmein2021 /add /passwordchg:yes
+net users user2 Letmein2021 /add /logonpasswordchg:yes
+net users admin2 Letmein2021 /add /logonpasswordchg:yes
 net localgroup Administrators admin2 /add
 net localgroup "Remote Desktop Users" user2 /add
 </script>
