@@ -28,6 +28,12 @@ variable "your_existing_security_group" {
   default     = "sg-00fad24cc88e4e8d3"
 }
 
+variable "your_existing_iam_instance_profile" {
+  description = "Specifies the exisiting security group"
+  type        = string
+  default     = "AmazonSSMManagedInstanceCore"
+}
+
 variable "project_tag" {
   description = "Specifies the name tag."
   type        = string

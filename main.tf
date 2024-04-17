@@ -84,7 +84,7 @@ resource "aws_instance" "example_linux_existing_policy" {
   user_data              = var.string_heredoc_type
   vpc_security_group_ids = [var.your_existing_security_group]
   #  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
-  iam_instance_profile        = "AmazonSSMManagedInstanceCore_Role"
+  iam_instance_profile        = var.your_existing_iam_instance_profile
   associate_public_ip_address = true
   root_block_device {
     volume_type           = "gp2"
@@ -104,7 +104,7 @@ resource "aws_instance" "example_windows_existing_policy" {
   user_data              = var.string_heredoc_type
   vpc_security_group_ids = [var.your_existing_security_group]
   #  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
-  iam_instance_profile        = "AmazonSSMManagedInstanceCore_Role"
+  iam_instance_profile        = var.your_existing_iam_instance_profile
   associate_public_ip_address = true
   root_block_device {
     volume_type           = "gp2"
