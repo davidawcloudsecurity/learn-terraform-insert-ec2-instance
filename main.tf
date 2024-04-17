@@ -94,8 +94,8 @@ resource "aws_instance" "example_linux_existing_policy" {
 
   tags = {
     Project     = local.tags.Project
-    Name        = "JH"
-    Environment = "local.tags.Environment" # Staging / Production / Development
+    Name        = "syslog"
+    Environment = local.tags.Environment
   }
 }
 
@@ -117,6 +117,6 @@ resource "aws_instance" "example_windows_existing_policy" {
   tags = {
     Project     = local.tags.Project
     Name        = "JH"
-    Environment = "local.tags.Environment" # Staging / Production / Development
+    Environment = local.tags.Environment
   }
 }
