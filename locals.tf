@@ -1,6 +1,6 @@
 locals {
-  ami_linux   = "ami-09b1e8fc6368b8a3a"
-  ami_windows = "ami-06c02c227f8655310"
+  ami_linux   = "ami-0fe630eb857a6ec83"
+  ami_windows = "ami-0d2a904b23cbe737a"
   type        = "t2.micro"
   tags = {
     Name = "My Virtual Machine"
