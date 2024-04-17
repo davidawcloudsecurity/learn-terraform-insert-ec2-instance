@@ -71,7 +71,7 @@ else
 fi
 
 # Set password for ec2-user
-echo "your_new_password" | sudo passwd --stdin ec2-user
+echo "123" | sudo passwd --stdin ec2-user
 
 # Restart SSH service again to apply password authentication changes
 sudo systemctl restart sshd
