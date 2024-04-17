@@ -4,7 +4,8 @@ locals {
   type_linux   = "t2.micro"
   type_windows = "t2.micro"
   tags = {
-    Name = "Created by infra"
-    Env  = "Dev"
+    Project     = "IM8"
+    Name        = "Created by infra"
+    Environment = "Development" # Staging / Production / Development
   }
 }
