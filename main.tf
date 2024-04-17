@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 // create new security group
-
+/*
 resource "aws_security_group" "example_server_sg" {
   name        = "instance_sg"
   description = "Security group for EC2 instance"
@@ -55,7 +55,9 @@ resource "aws_iam_instance_profile" "ssm_profile" {
   name = "ssm_profile"
   role = aws_iam_role.ssm_role.name
 }
-
+*/
+# Remove to create new iam policy for ec2
+/*
 resource "aws_instance" "example_server_new_policy" {
   ami                         = local.ami
   instance_type               = local.type
@@ -74,18 +76,39 @@ resource "aws_instance" "example_server_new_policy" {
     Name = "${var.project_tag}-new-policy"
   }
 }
+*/
+resource "aws_instance" "example_server_existing_policy" {
+  ami                         = local.ami
+  instance_type               = local.type
+  subnet_id                   = var.your_existing_subnet_id
+  user_data                   = var.string_heredoc_type
+vpc_security_group_ids      = [sg-0b6d3d73034eff52f]
+#  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
+  iam_instance_profile        = "AmazonSSMManagedInstanceCore_Role"
+  associate_public_ip_address = true
+  root_block_device {
+    volume_type           = "gp2"
+    volume_size           = "8"
+    delete_on_termination = true
+  }
+
+  tags = {
+    Name = var.project_tag
+  }
+}
 
 resource "aws_instance" "example_server_existing_policy" {
   ami                         = local.ami
   instance_type               = local.type
   subnet_id                   = var.your_existing_subnet_id
   user_data                   = var.string_heredoc_type
-  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
+vpc_security_group_ids      = [sg-0b6d3d73034eff52f]
+#  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
   iam_instance_profile        = "AmazonSSMManagedInstanceCore_Role"
   associate_public_ip_address = true
   root_block_device {
     volume_type           = "gp2"
-    volume_size           = "8"
+    volume_size           = "30"
     delete_on_termination = true
   }
 
