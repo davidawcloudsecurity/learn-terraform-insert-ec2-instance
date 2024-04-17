@@ -6,5 +6,4 @@ locals {
     Name = "My Virtual Machine"
     Env  = "Dev"
   }
-  subnet = "subnet-76a8163a"
 }

@@ -13,13 +13,13 @@ variable "use_existing_infra" {
 variable "your_existing_vpc_id" {
   description = "The vpc id the instance will be created (e.g., vpc-086340xxxxxxxxxxx)"
   type        = string
-  default     = "vpc-086340a0c95fe4d4b"
+  default     = "vpc-08af00a9da60f1f70"
 }
 
 variable "your_existing_subnet_id" {
   description = "Specifies the main CIDR block."
   type        = string
-  default     = "subnet-0d3db2de738b69acc"
+  default     = "subnet-009f1fe543c8a0daa"
 }
 
 variable "your_existing_security_group" {
