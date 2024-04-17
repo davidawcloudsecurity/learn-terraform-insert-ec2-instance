@@ -4,7 +4,7 @@ locals {
   type_linux        = "t2.micro"
   type_windows        = "t2.micro"
   tags = {
-    Name = "My Virtual Machine"
+    Name = "Created by infra"
     Env  = "Dev"
   }
 }
