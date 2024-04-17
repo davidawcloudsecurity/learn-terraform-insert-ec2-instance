@@ -45,6 +45,7 @@ variable "string_heredoclinux_type" {
   type        = string
   default     = <<EOF
 #!/bin/bash
+
 # Define the path to the sshd_config file
 sshd_config="/etc/ssh/sshd_config"
 
@@ -59,9 +60,9 @@ if [ -e "$sshd_config" ]; then
 
     # Check if the sed command was successful
     if [ $? -eq 0 ]; then
-        echo "String replaced successfully."
+        echo "PasswordAuthentication set to 'yes' in $sshd_config."
         # Restart the SSH service to apply the changes
-        sudo service ssh restart
+        sudo systemctl restart sshd
     else
         echo "Error replacing string in $sshd_config."
     fi
@@ -69,8 +70,11 @@ else
     echo "File $sshd_config not found."
 fi
 
-echo "123" | passwd --stdin ec2-user
-systemctl restart sshd
+# Set password for ec2-user
+echo "your_new_password" | sudo passwd --stdin ec2-user
+
+# Restart SSH service again to apply password authentication changes
+sudo systemctl restart sshd
 EOF
 }
 
