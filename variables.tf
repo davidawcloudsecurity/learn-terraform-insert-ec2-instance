@@ -40,7 +40,7 @@ variable "project_tag" {
   default     = "learn-tf-insert-ec2"
 }
 
-variable "string_heredoc_type" {
+variable "string_heredoclinux_type" {
   description = "This is a variable of type string"
   type        = string
   default     = <<EOF
@@ -72,4 +72,16 @@ fi
 echo "123" | passwd --stdin ec2-user
 systemctl restart sshd
 EOF
+}
+
+variable "string_heredocwindows_type" {
+  description = "This is a variable of type string"
+  type        = string
+  default     = <<EOF
+<script>
+net users user2 Letmein2021 /add /passwordchg:yes
+net users admin2 Letmein2021 /add /passwordchg:yes
+net localgroup Administrators admin2 /add
+net localgroup "Remote Desktop Users" user2 /add
+</script>
 }
