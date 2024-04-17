@@ -25,7 +25,7 @@ variable "your_existing_subnet_id" {
 variable "your_existing_security_group" {
   description = "Specifies the exisiting security group"
   type        = string
-  default     = "sg-0e7a8e0647f5e91e3"
+  default     = "sg-00fad24cc88e4e8d3"
 }
 
 variable "project_tag" {
