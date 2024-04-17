@@ -82,7 +82,7 @@ resource "aws_instance" "example_linux_existing_policy" {
   instance_type          = local.type
   subnet_id              = var.your_existing_subnet_id
   user_data              = var.string_heredoc_type
-  vpc_security_group_ids = ["sg-0b6d3d73034eff52f"]
+  vpc_security_group_ids = [var.your_existing_security_group]
   #  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
   iam_instance_profile        = "AmazonSSMManagedInstanceCore_Role"
   associate_public_ip_address = true
@@ -102,7 +102,7 @@ resource "aws_instance" "example_windows_existing_policy" {
   instance_type          = local.type
   subnet_id              = var.your_existing_subnet_id
   user_data              = var.string_heredoc_type
-  vpc_security_group_ids = ["sg-0b6d3d73034eff52f"]
+  vpc_security_group_ids = [var.your_existing_security_group]
   #  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
   iam_instance_profile        = "AmazonSSMManagedInstanceCore_Role"
   associate_public_ip_address = true
