@@ -10,6 +10,17 @@ variable "use_existing_infra" {
   default     = true
 }
 
+variable "existing_key_pair" {
+  description = "Name of the existing EC2 key pair"
+  default     = "vpc-workshop"
+}
+
+variable "accept_no_key_pair" {
+  description = "Enter 'true' if you want to proceed without the key pair, 'false' otherwise"
+  type        = bool
+  default     = false
+}
+
 variable "your_existing_vpc_id" {
   description = "The vpc id the instance will be created (e.g., vpc-086340xxxxxxxxxxx)"
   type        = string
