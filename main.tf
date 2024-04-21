@@ -24,11 +24,13 @@ resource "aws_security_group" "example_server_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+*/
 
-# Create the IAM role
+# Create the IAM role for Systems Manager
 resource "aws_iam_role" "ssm_role" {
-  name = "ssm_role"
+  name = "aws_iam_role_ssm_role"
 
+  # Define the permissions for the IAM role
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -45,16 +47,30 @@ resource "aws_iam_role" "ssm_role" {
 EOF
 }
 
-# Attach the policy to the role
+# Attach the AmazonSSMManagedInstanceCore policy to the IAM role
 resource "aws_iam_role_policy_attachment" "attach-ssm" {
   role       = aws_iam_role.ssm_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
+# Attach the CloudWatchAgentAdminPolicy to the IAM role
+resource "aws_iam_role_policy_attachment" "attach-cloudwatch-admin" {
+  role       = aws_iam_role.ssm_role.name
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentAdminPolicy"
+}
+
+# Attach the CloudWatchAgentServerPolicy to the IAM role
+resource "aws_iam_role_policy_attachment" "attach-cloudwatch-server" {
+  role       = aws_iam_role.ssm_role.name
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+}
+
+# Create an instance profile for Systems Manager
 resource "aws_iam_instance_profile" "ssm_profile" {
-  name = "ssm_profile"
+  name = "aws_iam_instance_profile_ssm_profile"
   role = aws_iam_role.ssm_role.name
 }
+
 */
 # Remove to create new iam policy for ec2
 /*
