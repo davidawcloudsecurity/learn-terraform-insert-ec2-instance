@@ -3,8 +3,6 @@ provider "aws" {
 }
 
 locals {
-  ami_linux    = "ami-0fe630eb857a6ec83"
-  ami_windows  = "ami-0d2a904b23cbe737a"
   type_linux   = "t2.micro"
   type_windows = "t2.micro"
   tags = {
@@ -86,7 +84,7 @@ resource "aws_iam_instance_profile" "syslog_server_profile" {
 # Remove to create new iam policy for ec2
 /*
 resource "aws_instance" "example_server_new_policy" {
-  ami                         = local.ami
+  ami                         = var.ami_id_linx
   instance_type               = local.type
   subnet_id                   = var.your_existing_subnet_id
   user_data                   = var.string_heredoc_type
@@ -105,7 +103,7 @@ resource "aws_instance" "example_server_new_policy" {
 }
 */
 resource "aws_instance" "example_linux_existing_policy" {
-  ami                    = local.ami_linux
+  ami                    = var.ami_id_linux
   instance_type          = local.type_linux
   subnet_id              = var.your_existing_subnet_id
   key_name               = var.existing_key_pair
@@ -128,7 +126,7 @@ resource "aws_instance" "example_linux_existing_policy" {
 }
 
 resource "aws_instance" "example_windows_existing_policy" {
-  ami                    = local.ami_windows
+  ami                    = var.ami_id_windows
   instance_type          = local.type_windows
   subnet_id              = var.your_existing_subnet_id
   key_name               = var.existing_key_pair
