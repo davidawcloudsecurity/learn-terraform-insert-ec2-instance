@@ -168,3 +168,15 @@ resource "aws_instance" "example_windows_existing_policy" {
     Environment = local.tags.Environment
   }
 }
+
+output "instance_exists" {
+  value = length(data.aws_instances.existing_instances.ids) > 0
+}
+
+output "key_pair_exists" {
+  value = length(data.aws_key_pair.existing_key_pair.key_pairs) > 0
+}
+
+output "security_group_exists" {
+  value = length(data.aws_security_group.existing_security_group.ids) > 0
+}
