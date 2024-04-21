@@ -174,9 +174,9 @@ output "instance_exists" {
 }
 
 output "key_pair_exists" {
-  value = length(data.aws_key_pair.existing_key_pair.key_pairs) > 0
+  value = length(data.aws_key_pair.existing_key_pair) > 0
 }
 
 output "security_group_exists" {
-  value = length(data.aws_security_group.existing_security_group.ids) > 0
+  value = length(data.aws_security_group.existing_security_group.id) > 0
 }
