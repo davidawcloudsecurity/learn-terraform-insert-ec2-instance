@@ -14,8 +14,12 @@ locals {
   }
 }
 
+data "aws_key_pair" "existing_key_pair" {
+  key_name = var.existing_key_pair
+}
+
 data "aws_key_pair" "new_key_pair" {
-  count    = var.existing_key_pair_exists ? 0 : 1
+  count    = can(data.aws_key_pair.existing_key_pair) ? 0 : 1
   key_name = var.new_key_pair_name
 }
 
@@ -113,7 +117,7 @@ resource "aws_instance" "example_linux_existing_policy" {
   ami                    = local.ami_linux
   instance_type          = local.type_linux
   subnet_id              = var.your_existing_subnet_id
-  key_name               = var.existing_key_pair_exists ? var.existing_key_pair : data.aws_key_pair.new_key_pair.key_name
+  key_name               = can(data.aws_key_pair.existing_key_pair) ? var.existing_key_pair : data.aws_key_pair.existing_key_pair.key_name
   user_data              = var.string_heredoclinux_type
   vpc_security_group_ids = [var.your_existing_security_group]
   #  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
