@@ -47,7 +47,8 @@ variable "existing_key_pair" {
 variable "your_existing_vpc_id" {
   description = "The vpc id the instance will be created (e.g., vpc-086340xxxxxxxxxxx)"
   type        = string
-  default     = "vpc-0b762f1aec5a58aab"
+  default     = "vpc-0b762f1aec5a58aa"  //test error
+# default     = "vpc-0b762f1aec5a58aab"
 }
 
 variable "your_existing_subnet_id" {
