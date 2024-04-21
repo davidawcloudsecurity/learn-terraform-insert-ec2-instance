@@ -170,7 +170,7 @@ resource "aws_instance" "example_windows_existing_policy" {
 }
 
 output "vpc_subnet_exists" {
-  value = length(data.aws_instances.existing_vpc_subnet.id) > 0 ? "InstanceID-"${aws_instance.example_linux_existing_policy.id} : "VPC or subnet does not exist"
+  value = length(data.aws_instances.existing_vpc_subnet.id) > 0 ? "InstanceID-${aws_instance.example_linux_existing_policy.id}" : "VPC or subnet does not exist"
 }
 
 output "key_pair_exists" {
