@@ -4,6 +4,11 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
+variable "prerequisite" {
+  description = "Ensure you have vpc-id, subnet-id, iam role and key pair in hand (Press enter to continue)"
+  type        = string  
+}
+
 variable "use_existing_infra" {
   description = "True to use existing id. False to provide one"
   type        = bool
