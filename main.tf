@@ -26,7 +26,7 @@ resource "aws_security_group" "example_server_sg" {
 }
 */
 
-# Create the IAM role for Systems Manager
+# Create the IAM role ARN
 resource "aws_iam_role" "ssm_role" {
   name = "aws_iam_role_ssm_role"
 
@@ -65,7 +65,7 @@ resource "aws_iam_role_policy_attachment" "attach-cloudwatch-server" {
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
 }
 
-# Create an instance profile for Systems Manager
+# Create an instance profile ARN (e.g. arn:aws:iam::7673xxxxxx:instance-profile/aws_iam_instance_profile_ssm_profile)
 resource "aws_iam_instance_profile" "ssm_profile" {
   name = "aws_iam_instance_profile_ssm_profile"
   role = aws_iam_role.ssm_role.name
