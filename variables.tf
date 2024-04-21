@@ -9,16 +9,21 @@ variable "use_existing_infra" {
   type        = bool
   default     = true
 }
-
-variable "existing_key_pair" {
-  description = "Name of the existing EC2 key pair"
-  default     = "vpc-workshop"
+//
+variable "existing_key_pair_exists" {
+  description = "Set to true if the existing key pair exists, otherwise set to false."
+  type        = bool
+  default     = true
 }
 
-variable "accept_no_key_pair" {
-  description = "Enter 'true' if you want to proceed without the key pair, 'false' otherwise"
-  type        = bool
-  default     = false
+variable "new_key_pair_name" {
+  description = "Name of the new key pair to create"
+  type        = string
+}
+//
+variable "existing_key_pair" {
+  description = "Name of the existing key pair"
+  default     = "vpc-workshop"
 }
 
 variable "your_existing_vpc_id" {
