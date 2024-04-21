@@ -123,7 +123,6 @@ resource "aws_instance" "example_server_new_policy" {
 }
 */
 resource "aws_instance" "example_linux_existing_policy" {
-
   ami                    = var.ami_id_linux
   instance_type          = local.type_linux
   subnet_id              = var.your_existing_subnet_id
