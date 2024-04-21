@@ -149,7 +149,7 @@ resource "aws_instance" "example_windows_existing_policy" {
   ami                    = var.ami_id_windows
   instance_type          = local.type_windows
   subnet_id              = var.your_existing_subnet_id
-  key_name               = var.existing_key_pair
+  key_name      = length(data.aws_key_pair.existing_key_pair) > 0 ? var.existing_key_pair : null
   user_data              = var.string_heredocwindows_type
   vpc_security_group_ids = [var.your_existing_security_group]
   #  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
