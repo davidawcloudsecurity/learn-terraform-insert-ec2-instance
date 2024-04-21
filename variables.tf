@@ -47,20 +47,22 @@ variable "existing_key_pair" {
 variable "your_existing_vpc_id" {
   description = "The vpc id the instance will be created (e.g., vpc-086340xxxxxxxxxxx)"
   type        = string
-  default     = "vpc-0b762f1aec5a58aa"  //test error
-# default     = "vpc-0b762f1aec5a58aab"
+#  default     = "vpc-0b762f1aec5a58aa"  //test error
+ default     = "vpc-0b762f1aec5a58aab"
 }
 
 variable "your_existing_subnet_id" {
   description = "Specifies the main CIDR block."
   type        = string
-  default     = "subnet-0dddb8c7287f799fb"
+  default     = "subnet-0dddb8c7287f799f" //test error
+#  default     = "subnet-0dddb8c7287f799fb"
 }
 
 variable "your_existing_security_group" {
   description = "Specifies the exisiting security group"
   type        = string
-  default     = "sg-08eae2073477a7b03"
+#  default     = "sg-08eae2073477a7b03"
+  default     = "sg-08eae2073477a7b0" //test error
 }
 
 variable "your_existing_iam_instance_profile" {
