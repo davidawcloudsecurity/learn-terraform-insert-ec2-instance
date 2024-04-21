@@ -23,11 +23,13 @@ data "aws_instances" "existing_vpc_subnet" {
     values = [var.your_existing_subnet_id]
   }
 }
-/*
+
+# Check if key pair exists
 data "aws_key_pair" "existing_key_pair" {
-  key_name = var.existing_key_pair # Change "your_key_pair_name" to the name of the key pair you want to check
+  count    = var.existing_key_pair != "" ? 1 : 0
+  key_name = var.existing_key_pair
 }
-*/
+
 data "aws_security_group" "existing_security_group" {
   id = var.your_existing_security_group # Change the security group ID to the one you want to check
 }
@@ -171,11 +173,11 @@ resource "aws_instance" "example_windows_existing_policy" {
 output "vpc_subnet_exists" {
   value = length(data.aws_instances.existing_vpc_subnet.id) > 0 ? "InstanceID-${aws_instance.example_linux_existing_policy.id}" : "VPC or subnet does not exist"
 }
-/*
+
 output "key_pair_exists" {
   value = length(data.aws_key_pair.existing_key_pair) > 0
 }
-*/
+
 output "security_group_exists" {
   value = length(data.aws_security_group.existing_security_group.id) > 0
 }
