@@ -23,7 +23,7 @@ variable "new_key_pair_name" {
 
 variable "existing_key_pair" {
   description = "Name of the existing key pair"
-  default     = "vpc-workshop"
+  default     = "test-key-pair-exist"
 }
 
 variable "your_existing_vpc_id" {
