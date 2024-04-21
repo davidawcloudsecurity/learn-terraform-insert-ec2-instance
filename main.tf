@@ -24,11 +24,6 @@ data "aws_instances" "existing_vpc_subnet" {
   }
 }
 
-# Check if key pair exists
-data "aws_key_pair" "existing_key_pair" {
-  key_name = var.existing_key_pair
-}
-
 data "aws_security_group" "existing_security_group" {
   id = var.your_existing_security_group # Change the security group ID to the one you want to check
 }
