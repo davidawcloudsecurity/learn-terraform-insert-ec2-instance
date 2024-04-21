@@ -16,11 +16,11 @@ locals {
 data "aws_instances" "existing_instances" {
   filter {
     name   = "vpc-id"
-    values = [var.instance_id]
+    values = [var.your_existing_vpc_id]
   }
   filter {
     name   = "subnet-id"
-    values = [var.instance_id]
+    values = [var.your_existing_subnet_id]
   } 
 }
 
