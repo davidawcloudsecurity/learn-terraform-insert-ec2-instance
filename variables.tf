@@ -144,13 +144,12 @@ variable "string_heredocwindows_type" {
   description = "This is a variable of type string"
   type        = string
   default     = <<EOF
-<script>
-net users user2 Letmein2021 /add
-wmic UserAccount where Name='user2' set PasswordExpires=True
-net users admin2 Letmein2021 /add
-net localgroup Administrators admin2 /add
-net localgroup "Remote Desktop Users" user2 /add
-net localgroup "Remote Desktop Users" user3 /add
-</script>
+<powershell>
+$password = ConvertTo-SecureString "P@ssw0rd123" -AsPlainText -Force
+New-LocalUser -Name "user2" -Password $password -FullName "test user" -Description "test sign-in account" | Set-LocalUser -PasswordNeverExpires $false
+New-LocalUser -Name "admin2" -Password $password -FullName "test user" -Description "test sign-in account" | Set-LocalUser -PasswordNeverExpires $true
+Add-LocalGroupMember -Group "Remote Desktop Users" -Member "user2"
+Add-LocalGroupMember -Group "Administrators" -Member "admin2"
+</powershell>
 EOF
 }
