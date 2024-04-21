@@ -61,6 +61,7 @@ EOF
 
 # Attach the AmazonSSMManagedInstanceCore policy to the IAM role
 resource "aws_iam_role_policy_attachment" "attach-ssm" {
+  count         = var.your_existing_vpc_id && var.your_existing_subnet_id ? 1 : 0
   role       = aws_iam_role.syslog_server_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
@@ -105,6 +106,7 @@ resource "aws_instance" "example_server_new_policy" {
 }
 */
 resource "aws_instance" "example_linux_existing_policy" {
+  count         = var.your_existing_vpc_id && var.your_existing_subnet_id ? 1 : 0
   ami                    = local.ami_linux
   instance_type          = local.type_linux
   subnet_id              = var.your_existing_subnet_id
@@ -128,6 +130,7 @@ resource "aws_instance" "example_linux_existing_policy" {
 }
 
 resource "aws_instance" "example_windows_existing_policy" {
+  count         = var.your_existing_vpc_id && var.your_existing_subnet_id ? 1 : 0
   ami                    = local.ami_windows
   instance_type          = local.type_windows
   subnet_id              = var.your_existing_subnet_id
