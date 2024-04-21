@@ -12,11 +12,13 @@ variable "prerequisite" {
 variable ami_id_linux {
   description = "Ensure you have ami-id for syslog"
   type        = string
+  default     = "ami-0fe630eb857a6ec83"
 }
 
 variable ami_id_windows {
   description = "Ensure you have ami-id for JH"
   type        = string
+  default     = "ami-0d2a904b23cbe737a"
 }
 
 variable "use_existing_infra" {
