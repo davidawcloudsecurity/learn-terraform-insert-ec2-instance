@@ -61,8 +61,8 @@ variable "your_existing_subnet_id" {
 variable "your_existing_security_group" {
   description = "Specifies the exisiting security group"
   type        = string
-#  default     = "sg-08eae2073477a7b03"
-  default     = "sg-08eae2073477a7b0" //test error
+  default     = "sg-08eae2073477a7b03"
+#  default     = "sg-08eae2073477a7b0" //test error
 }
 
 variable "your_existing_iam_instance_profile" {
