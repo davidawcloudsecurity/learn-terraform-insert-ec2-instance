@@ -13,7 +13,7 @@ locals {
 }
 
 # Check if instance exists
-data "aws_instances" "existing_instances" {
+data "aws_instances" "existing_vpc_subnet" {
   filter {
     name   = "vpc-id"
     values = [var.your_existing_vpc_id]
@@ -169,8 +169,8 @@ resource "aws_instance" "example_windows_existing_policy" {
   }
 }
 
-output "instance_exists" {
-  value = length(data.aws_instances.existing_instances.ids) > 0
+output "vpc_subnet_exists" {
+  value = length(data.aws_instances.existing_vpc_subnet.ids) > 0
 }
 
 output "key_pair_exists" {
