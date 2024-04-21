@@ -83,35 +83,43 @@ variable "string_heredoclinux_type" {
   default     = <<EOF
 #!/bin/bash
 
-# Define the path to the sshd_config file
-sshd_config="/etc/ssh/sshd_config"
+# Get the operating system name
+OS_NAME=$(uname -s)
 
-# Define the string to be replaced
-old_string="PasswordAuthentication no"
-new_string="PasswordAuthentication yes"
-
-# Check if the file exists
-if [ -e "$sshd_config" ]; then
-    # Use sed to replace the old string with the new string
-    sudo sed -i "s/$old_string/$new_string/" "$sshd_config"
-
-    # Check if the sed command was successful
-    if [ $? -eq 0 ]; then
-        echo "PasswordAuthentication set to 'yes' in $sshd_config."
-        # Restart the SSH service to apply the changes
-        sudo systemctl restart sshd
+# Check if the operating system is RHEL
+if [ "$OS_NAME" == "Linux" ]; then
+    if grep -q '^ID="rhel"' /etc/os-release; then
+        # Get the machine architecture
+        ARCH=$(uname -m)
+        
+        # Check if the architecture is ARM
+        if [ "$ARCH" == "aarch64" ]; then
+            # Actions for ARM architecture
+            echo "RHEL on ARM Architecture"
+            # Do something for ARM architecture
+            dnf install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_arm64/amazon-ssm-agent.rpm
+        elif [ "$ARCH" == "x86_64" ]; then
+            # Actions for x64 architecture
+            echo "RHEL on x64 Architecture"
+            # Do something for x64 architecture
+            dnf install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+        else
+            # Actions for other architectures
+            echo "Unsupported Architecture"
+            # Do something for other architectures
+        fi
+    systemctl enable amazon-ssm-agent
+    systemctl start amazon-ssm-agent
     else
-        echo "Error replacing string in $sshd_config."
+        # Actions for non-RHEL operating systems
+        echo "Not RHEL"
+        # Do something for non-RHEL operating systems
     fi
 else
-    echo "File $sshd_config not found."
+    # Actions for non-Linux operating systems
+    echo "Not a Linux operating system"
+    # Do something for non-Linux operating systems
 fi
-
-# Set password for ec2-user
-echo "123" | sudo passwd --stdin ec2-user
-
-# Restart SSH service again to apply password authentication changes
-sudo systemctl restart sshd
 EOF
 }
 
