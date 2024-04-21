@@ -71,7 +71,6 @@ resource "aws_iam_instance_profile" "ssm_profile" {
   role = aws_iam_role.ssm_role.name
 }
 
-*/
 # Remove to create new iam policy for ec2
 /*
 resource "aws_instance" "example_server_new_policy" {
