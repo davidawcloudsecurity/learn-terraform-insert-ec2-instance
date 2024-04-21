@@ -15,9 +15,9 @@ locals {
 # Check if instance exists
 data "aws_instances" "existing_instances" {
   filter {
-    name   = "vpc-id"
-    values = [var.your_existing_vpc_id]
-  }  
+    name   = "subnet-id"
+    values = [var.your_existing_subnet_id]
+  }
 }
 
 data "aws_key_pair" "existing_key_pair" {
