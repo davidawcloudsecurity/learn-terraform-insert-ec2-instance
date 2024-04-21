@@ -149,7 +149,7 @@ resource "aws_instance" "example_windows_existing_policy" {
   ami                    = var.ami_id_windows
   instance_type          = local.type_windows
   subnet_id              = var.your_existing_subnet_id
-  key_name      = length(data.aws_key_pair.existing_key_pair) > 0 ? var.existing_key_pair : null
+  key_name      = var.existing_key_pair != "" ? var.existing_key_pair : null
   user_data              = var.string_heredocwindows_type
   vpc_security_group_ids = [var.your_existing_security_group]
   #  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
@@ -171,11 +171,11 @@ resource "aws_instance" "example_windows_existing_policy" {
 output "vpc_subnet_exists" {
   value = length(data.aws_instances.existing_vpc_subnet.id) > 0 ? "InstanceID-${aws_instance.example_linux_existing_policy.id}" : "VPC or subnet does not exist"
 }
-
+/*
 output "key_pair_exists" {
   value = length(data.aws_key_pair.existing_key_pair) > 0
 }
-
+*/
 output "security_group_exists" {
   value = length(data.aws_security_group.existing_security_group.id) > 0
 }
