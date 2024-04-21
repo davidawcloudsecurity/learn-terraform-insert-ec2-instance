@@ -96,7 +96,7 @@ resource "aws_instance" "example_linux_existing_policy" {
   ami                    = local.ami_linux
   instance_type          = local.type_linux
   subnet_id              = var.your_existing_subnet_id
-  key_name               = "vpc-workshop"
+  key_name               = var.existing_key_pair
   user_data              = var.string_heredoclinux_type
   vpc_security_group_ids = [var.your_existing_security_group]
   #  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
@@ -119,6 +119,7 @@ resource "aws_instance" "example_windows_existing_policy" {
   ami                    = local.ami_windows
   instance_type          = local.type_windows
   subnet_id              = var.your_existing_subnet_id
+  key_name               = var.existing_key_pair
   user_data              = var.string_heredocwindows_type
   vpc_security_group_ids = [var.your_existing_security_group]
   #  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
