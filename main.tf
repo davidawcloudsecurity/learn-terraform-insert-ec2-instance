@@ -170,15 +170,5 @@ resource "aws_instance" "example_windows_existing_policy" {
 }
 
 output "vpc_subnet_exists" {
-  value = length(data.aws_instances.existing_vpc_subnet.id) > 0 ? Syslog-Server-ID-${aws_instance.example_linux_existing_policy.id} JH-ID-${aws_instance.example_windows_existing_policy.id} : "VPC or subnet does not exist"
+  value = length(data.aws_instances.existing_vpc_subnet.id) > 0 ? "Syslog-Server-ID-${aws_instance.example_linux_existing_policy.id} JH-ID-${aws_instance.example_windows_existing_policy.id}" : "VPC or subnet does not exist"
 }
-
-/*
-output "key_pair_exists" {
-  value = length(data.aws_key_pair.existing_key_pair) > 0
-}
-
-output "security_group_exists" {
-  value = length(data.aws_security_group.existing_security_group.id) > 0
-}
-*/
