@@ -48,14 +48,14 @@ variable "your_existing_vpc_id" {
   description = "The vpc id the instance will be created (e.g., vpc-086340xxxxxxxxxxx)"
   type        = string
 #  default     = "vpc-0b762f1aec5a58aa"  //test error
- default     = "vpc-0b762f1aec5a58aab"
+   default     = "vpc-0b762f1aec5a58aab"
 }
 
 variable "your_existing_subnet_id" {
   description = "Specifies the main CIDR block."
   type        = string
-  default     = "subnet-0dddb8c7287f799f" //test error
-#  default     = "subnet-0dddb8c7287f799fb"
+#  default     = "subnet-0dddb8c7287f799f" //test error
+  default     = "subnet-0dddb8c7287f799fb"
 }
 
 variable "your_existing_security_group" {
