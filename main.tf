@@ -126,7 +126,7 @@ resource "aws_instance" "example_linux_existing_policy" {
   user_data              = var.string_heredoclinux_type
   vpc_security_group_ids = [var.your_existing_security_group]
   #  vpc_security_group_ids      = [aws_security_group.example_server_sg.id] // create new sg
-  iam_instance_profile        = var.your_existing_iam_instance_profile
+  iam_instance_profile        = aws_iam_instance_profile.syslog_server_profile.name
   associate_public_ip_address = true
   root_block_device {
     volume_type           = "gp2"
