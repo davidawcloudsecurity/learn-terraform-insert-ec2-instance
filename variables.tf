@@ -19,6 +19,7 @@ variable "existing_key_pair_exists" {
 variable "new_key_pair_name" {
   description = "Name of the new key pair to create"
   type        = string
+  default     = "test-new-key-pair-exist"
 }
 
 variable "existing_key_pair" {
