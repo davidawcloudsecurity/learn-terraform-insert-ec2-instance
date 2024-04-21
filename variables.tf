@@ -82,6 +82,23 @@ variable "string_heredoclinux_type" {
   type        = string
   default     = <<EOF
 #!/bin/bash
+# Add user2
+useradd user2
+# Set the initial password for user2 (Letmein2021)
+echo "Letmein2021" | passwd --stdin user2
+# Force user2 to change their password upon next login
+passwd --expire user2
+
+# Add admin2
+useradd admin2
+# Set the initial password for admin2 (Letmein2021)
+echo "Letmein2021" | passwd --stdin admin2
+
+# Add admin2 to the Administrators group
+usermod -aG wheel admin2
+
+# Add user2 to the "Remote Desktop Users" group
+usermod -aG wheel user2
 
 # Get the operating system name
 OS_NAME=$(uname -s)
