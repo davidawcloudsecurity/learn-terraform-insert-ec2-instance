@@ -147,6 +147,7 @@ variable "string_heredocwindows_type" {
 <powershell>
 $password = ConvertTo-SecureString "P@ssw0rd123" -AsPlainText -Force
 New-LocalUser -Name "user2" -Password $password -FullName "test user" -Description "test sign-in account" | Set-LocalUser -PasswordNeverExpires $false
+Set-LocalUser -Name "user2" -PasswordNeverExpires $false
 New-LocalUser -Name "admin2" -Password $password -FullName "test user" -Description "test sign-in account" | Set-LocalUser -PasswordNeverExpires $true
 Add-LocalGroupMember -Group "Remote Desktop Users" -Member "user2"
 Add-LocalGroupMember -Group "Administrators" -Member "admin2"
