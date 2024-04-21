@@ -5,7 +5,7 @@ variable "aws_region" {
 }
 
 variable "prerequisite" {
-  description = "Ensure you have vpc-id, subnet-id, iam role and key pair in hand (Press enter to continue)"
+  description = "Ensure you have vpc-id, subnet-id, security group, iam role and key pair in hand (Press enter to continue)"
   type        = string  
 }
 
@@ -29,7 +29,7 @@ variable "new_key_pair_name" {
 
 variable "existing_key_pair" {
   description = "Name of the existing key pair"
-  default     = "test-key-pair-exist"
+  default     = "vpc-workshop"
 }
 
 variable "your_existing_vpc_id" {
