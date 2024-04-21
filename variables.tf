@@ -9,6 +9,16 @@ variable "prerequisite" {
   type        = string  
 }
 
+variable ami_id_linux {
+  description = "Ensure you have ami-id for syslog"
+  type        = string
+}
+
+variable ami_id_windows {
+  description = "Ensure you have ami-id for JH"
+  type        = string
+}
+
 variable "use_existing_infra" {
   description = "True to use existing id. False to provide one"
   type        = bool
