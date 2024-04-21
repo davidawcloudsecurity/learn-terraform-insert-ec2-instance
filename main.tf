@@ -12,6 +12,26 @@ locals {
   }
 }
 
+# Check if instance exists
+data "aws_instances" "existing_instances" {
+  filter {
+    name   = "vpc-id"
+    values = [var.instance_id]
+  }
+  filter {
+    name   = "subnet-id"
+    values = [var.instance_id]
+  } 
+}
+
+data "aws_key_pair" "existing_key_pair" {
+  key_name = var.existing_key_pair # Change "your_key_pair_name" to the name of the key pair you want to check
+}
+
+data "aws_security_group" "existing_security_group" {
+  id = var.your_existing_security_group # Change the security group ID to the one you want to check
+}
+
 // create new security group
 /*
 resource "aws_security_group" "example_server_sg" {
@@ -103,6 +123,7 @@ resource "aws_instance" "example_server_new_policy" {
 }
 */
 resource "aws_instance" "example_linux_existing_policy" {
+
   ami                    = var.ami_id_linux
   instance_type          = local.type_linux
   subnet_id              = var.your_existing_subnet_id
