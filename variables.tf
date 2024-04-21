@@ -5,7 +5,7 @@ variable "aws_region" {
 }
 
 variable "prerequisite" {
-  description = "Ensure you have ami-id, vpc-id, subnet-id, security group, iam role and key pair in hand (Press enter to continue)"
+  description = "Ensure you have ami-id, vpc-id, subnet-id, security group id, iam role and key pair name in hand (Press enter to continue)"
   type        = string  
 }
 
