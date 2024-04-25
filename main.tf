@@ -74,21 +74,22 @@ resource "aws_iam_instance_profile" "syslog_server_profile" {
 }
 
 resource "aws_instance" "example_nessus_existing_policy" {
-  ami                    = var.ami_id_linux
-  instance_type          = local.type_linux
+  ami                    = var.ami_id_nessus
+//  instance_type          = local.type_linux
   subnet_id              = var.your_existing_subnet_id
   key_name               = var.existing_key_pair
   vpc_security_group_ids = [var.your_existing_security_group]
   associate_public_ip_address = true
+/*
   root_block_device {
     volume_type           = "gp2"
     volume_size           = "10"
     delete_on_termination = true
   }
-
+*/
   tags = {
     Project     = local.tags.Project
-    Name        = "nessus"
+    Name        = "nessus_01"
     Environment = local.tags.Environment
   }
 }
@@ -105,13 +106,13 @@ resource "aws_instance" "example_linux_existing_policy" {
   associate_public_ip_address = true
   root_block_device {
     volume_type           = "gp2"
-    volume_size           = "10"
+    volume_size           = "50"
     delete_on_termination = true
   }
 
   tags = {
     Project     = local.tags.Project
-    Name        = "syslog"
+    Name        = "syslog_server_01"
     Environment = local.tags.Environment
   }
 }
@@ -134,7 +135,7 @@ resource "aws_instance" "example_windows_existing_policy" {
 
   tags = {
     Project     = local.tags.Project
-    Name        = "JH"
+    Name        = "JH_01"
     Environment = local.tags.Environment
   }
 }
