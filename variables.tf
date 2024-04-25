@@ -15,6 +15,12 @@ variable ami_id_linux {
   default     = "ami-0fe630eb857a6ec83"
 }
 
+variable ami_id_nessus {
+  description = "Ensure you have ami-id for syslog"
+  type        = string
+  default     = "ami-0fe630eb857a6ec83"
+}
+
 variable ami_id_windows {
   description = "Ensure you have ami-id for JH"
   type        = string
